@@ -1,17 +1,16 @@
 import { type FC } from "react";
-import { useState, type PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { type ListItem } from "../types/ListItem";
 
 type ListData = {
     items: ListItem[];
+    onDelete: (delIndex: number) => void
 }
 
 type ListProps = PropsWithChildren<ListData>;
 
-const ListComponent : FC<ListProps> = ({items}) => {
-    const [state, setItems] = useState<ListItem[]>(items);
-
-    const listRender = state.map(item => <li>{item.value}<button onClick={()=>setItems(prev=>prev.filter(it=>it.index != item.index))}>X</button></li>)
+const ListComponent : FC<ListProps> = ({items, onDelete}) => {    
+    const listRender = items.map(item => <li>{item.value}<button onClick={()=> onDelete(item.index)}>X</button></li>)
 
     return (
         <ul>

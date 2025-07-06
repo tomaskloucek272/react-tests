@@ -1,4 +1,4 @@
-export type Person = {
-    name: string,
-    surname: string
+export type ValueItem = {
+    item: string
+    onItemAdd: (itm: string) => void;
 }

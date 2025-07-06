@@ -1,24 +1,17 @@
 import { type PropsWithChildren, type FC, useState } from "react";
-import { type Person } from "../types/Model";
+import { type ValueItem } from "../types/Model";
 
-type FormComponentProps = PropsWithChildren<Person>;
+type FormComponentProps = PropsWithChildren<ValueItem>;
 
-const FormComponentTest: FC<FormComponentProps> = ({name, surname}) => {
-    const [data, setForm] = useState<Person>({
-        name: name,
-        surname: surname
-    })
+const FormComponentTest: FC<FormComponentProps> = ({item, onItemAdd}) => {
+    const [data, setForm] = useState(item)
     return (
-        <form onSubmit={()=> {
-            alert(data.name + " "+data.surname);
+        <form onSubmit={(e)=> {
+            e.preventDefault();
+            onItemAdd(data)
         }}>
-            Name: 
-            <input name="name" onChange={(e)=>{ setForm(prev=> {
-                return {...prev, [e.target.name] : e.target.value}
-                }
-                )}} value={data.name} />            
-            Surname: 
-            <input name="surname" onChange={(e)=>{ setForm(prev=>({...prev, [e.target.name] : e.target.value}))}} value={data.surname} />            
+            Item: 
+            <input name="item" onChange={(e)=>{ setForm(e.target.value) }} value={data} />                        
             <button>SUBMIT</button>
         </form>
     );

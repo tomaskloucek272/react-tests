@@ -1,4 +1,4 @@
-import { type FC } from "react"
+import { useState, type FC } from "react"
 import HeaderComponent from "./HeaderComponent"
 import type { ListItem } from "../types/ListItem"
 import ListComponent from "./ListComponent"
@@ -34,10 +34,12 @@ const listItems: ListItem[] = [
 ]
 
 export default function GoalComponent() {
+    const [listData, setListData] = useState(listItems);
+
     return (
         <>
-            <FormComponentTest name="Enter name" surname="Enter surname" />
-            <ListComponent items={listItems} />
+            <FormComponentTest item="Enter value" onItemAdd={(newItem: string) => setListData (prev=> [...prev, {index: prev.length+1, value: newItem}])}/>
+            <ListComponent items={listData} onDelete={ (toDeleteIndex: number) => setListData( prev=> prev.filter(itm=>itm.index != toDeleteIndex))} />
             <LocalComponent name="aaa" title="sss" test="sws" />
         </>
     );
