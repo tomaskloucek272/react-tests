@@ -3,6 +3,7 @@ import HeaderComponent from "./HeaderComponent"
 import type { ListItem } from "../types/ListItem"
 import ListComponent from "./ListComponent"
 import FormComponentTest from "./FormTest"
+import InfoBox from "./InfoBox"
 
 interface GoalProps {
     name: string,
@@ -37,10 +38,12 @@ export default function GoalComponent() {
     const [listData, setListData] = useState(listItems);
 
     return (
-        <>
+        <>            
             <FormComponentTest item="Enter value" onItemAdd={(newItem: string) => setListData (prev=> [...prev, {index: prev.length+1, value: newItem}])}/>
             <ListComponent items={listData} onDelete={ (toDeleteIndex: number) => setListData( prev=> prev.filter(itm=>itm.index != toDeleteIndex))} />
             <LocalComponent name="aaa" title="sss" test="sws" />
+            <InfoBox type="warning" level="severity" />
+            <InfoBox type="info" length={25}  />
         </>
     );
 }
