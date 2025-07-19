@@ -4,6 +4,7 @@ import type { ListItem } from "../types/ListItem"
 import ListComponent from "./ListComponent"
 import FormComponentTest from "./FormTest"
 import InfoBox from "./InfoBox"
+import InputComponent from "./InputComponent"
 
 interface GoalProps {
     name: string,
@@ -39,6 +40,7 @@ export default function GoalComponent() {
 
     return (
         <>            
+            <InputComponent type="text" startingText="Hello" label="WOLE" />
             <FormComponentTest item="Enter value" onItemAdd={(newItem: string) => setListData (prev=> [...prev, {index: prev.length+1, value: newItem}])}/>
             <ListComponent items={listData} onDelete={ (toDeleteIndex: number) => setListData( prev=> prev.filter(itm=>itm.index != toDeleteIndex))} />
             <LocalComponent name="aaa" title="sss" test="sws" />
