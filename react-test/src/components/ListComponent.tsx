@@ -10,12 +10,16 @@ type ListData = {
 type ListProps = PropsWithChildren<ListData>;
 
 const ListComponent : FC<ListProps> = ({items, onDelete}) => {    
-    const listRender = items.map(item => <li>{item.value}<button onClick={()=> onDelete(item.index)}>X</button></li>)
+    const listRender = items.map(item => <li key={item.value}>{item.value}<button onClick={()=> onDelete(item.index)}>X</button></li>)
 
     return (
+        <> 
+        <label id="username">Username</label>
+        <span aria-labelledby="username">Please enter your username</span>
         <ul>
             {listRender}
         </ul>
+        </>
     );
 }
 
