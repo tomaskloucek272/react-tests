@@ -50,9 +50,20 @@ describe('test unit', () => {
     expect(inputField).toHaveValue('HolyCrap');
     await userEvent.click(buttonSubmit);
 
-    const listItemsInDom = screen.getAllByRole('listitem');
+    userEvent.clear(inputField)
+    await userEvent.type(inputField, 'HolyCrap2');
+    expect(inputField).toHaveValue('HolyCrap2');
+    await userEvent.click(buttonSubmit);
+
+    expect(mockedFunction.mock.calls).toHaveLength(2)
+    expect(mockedFunction.mock.calls[0][0]).toBe('HolyCrap')
+    expect(mockedFunction.mock.calls[1][0]).toBe('HolyCrap2')
+
+    //const listItemsInDom = screen.getAllByRole('listitem');
     //expect(listItemsInDom).toHaveLength(5); 
-    expect(mockedFunction).toHaveBeenCalledWith('HolyCrap');
+    //expect(mockedFunction).toHaveBeenCalledWith('HolyCrap');
+    // number of calls mock has been called.
+    //expect(mockedFunction.mock.calls).toHaveLength(1)
 
     // Debug DOM state
     screen.debug();
