@@ -16,9 +16,9 @@ const FormComponentTest: FC<FormComponentProps> = ({item, onItemAdd}) => {
             
             onItemAdd(data)
         }}>
-            <label id="addItem">Item</label>
-            <input aria-labelledby="addItem" data-testid="addItem" name="item" type="text" ref={valueRef} />                        
-            <button data-testid="addButton">SUBMIT</button>
+            <label htmlFor="addItem">Item</label>
+            <input id="addItem" ref={valueRef} />                        
+            <button aria-label="addButton">SUBMIT</button>
         </form>
     );
 }

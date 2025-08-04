@@ -39,10 +39,12 @@ describe('test unit', () => {
     expect(list[0]).toBeInTheDocument(); // Check the first <ul> element
 
     // Verify input and button exist
-    const inputField = screen.getByTestId('addItem');
+    //const inputField = screen.getByTestId('addItem');
+    const inputField = screen.getByRole('textbox', {name: /item/i})
     expect(inputField).toBeInTheDocument();
 
-    const buttonSubmit = screen.getByTestId('addButton');
+    //const buttonSubmit = screen.getByTestId('addButton');
+    const buttonSubmit = screen.getByRole('button', {name: /addButton/i})
     expect(buttonSubmit).toBeInTheDocument();
 
     // Simulate user input and submission
