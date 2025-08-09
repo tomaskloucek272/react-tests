@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type ListItem } from '../types/ListItem';
 import FormComponentTest from '../components/FormTest';
@@ -10,16 +10,19 @@ const mockedFunction = jest.fn()
 
 // Parent component to manage shared state
 function TestWrapper() {
-  const [data, setData] = useState<ListItem[]>([
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [data, _setData] = useState<ListItem[]>([
     { index: 1, value: 'Number' },
     { index: 2, value: 'Number two' },
     { index: 3, value: 'Number three' },
     { index: 4, value: 'Number four' },
   ]);
 
+  /** 
   const addFunction = (item: string) => {
     setData((prev) => [...prev, { index: prev.length + 1, value: item }]);
   };
+  */
 
   return (
     <>

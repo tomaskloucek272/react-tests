@@ -5,6 +5,7 @@ import ListComponent from "./ListComponent"
 import FormComponentTest from "./FormTest"
 import InfoBox from "./InfoBox"
 import InputComponent from "./InputComponent"
+import { NavLink } from "react-router"
 
 interface GoalProps {
     name: string,
@@ -46,6 +47,7 @@ export default function GoalComponent() {
             <LocalComponent name="aaa" title="sss" test="sws" />
             <InfoBox type="warning" level="severity" />
             <InfoBox type="info" length={25}  />
+            <NavLink to="/detail/1" >DETAIL</NavLink>
         </>
     );
 }
